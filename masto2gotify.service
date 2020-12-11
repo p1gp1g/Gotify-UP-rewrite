@@ -1,0 +1,12 @@
+[Unit]
+Description=Push Gateway from Mastodon to Gotify
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/home/user/mastodon-gotify
+ExecStart=/home/user/mastodon-gotify/venv/bin/gunicorn -b localhost:5001 -w 2 masto2gotify:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

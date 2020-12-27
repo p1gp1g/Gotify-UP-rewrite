@@ -1,0 +1,12 @@
+[Unit]
+Description=Rewrite Proxy for Gotify
+After=network.target
+
+[Service]
+User=user
+WorkingDirectory=/opt/rewrite-proxy
+ExecStart=/opt/rewrite-proxy/venv/bin/gunicorn -b localhost:5001 -w 2 rewrite-proxy:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
